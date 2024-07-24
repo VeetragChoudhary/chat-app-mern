@@ -1,13 +1,15 @@
 import { useContext, useEffect, useRef } from "react"
 import "./Message.css"
 import { GlobalContext } from "../../../context/GlobalContext"
+import useListenMessages from "../../../hooks/useListenMessages"
+import timeAgo  from "../../../utils/extractTime"
 
 const Message = ({ message }) => {
     const endRef = useRef(null)
 
     const {authUser, selectedConversation} = useContext(GlobalContext)
     
-    console.log("hello from message")
+    useListenMessages()
 
     useEffect(() => {
         endRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -24,7 +26,7 @@ const Message = ({ message }) => {
                 <div className="texts">
                     {/* <img src="./photo.jpg" alt="" /> */}
                     <p>{message.message}</p>
-                    <span>{"1 min ago"}</span>
+                    <span>{timeAgo(message.createdAt)}</span>
                 </div>
             </div>
 

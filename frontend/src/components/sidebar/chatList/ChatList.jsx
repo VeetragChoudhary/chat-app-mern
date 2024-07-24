@@ -31,7 +31,7 @@ const ChatList = () => {
             {conversations?.map((conversation) => {
                 return (
                     <div key={conversation._id}>
-                        {/* { isOnline = onlineUsers?.includes(conversation._id)} */}
+                        { isOnline = onlineUsers?.includes(conversation._id)}
 
                         <div
                             className="item"
